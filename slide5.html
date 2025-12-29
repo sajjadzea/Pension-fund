@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 5 - Full System Overview</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        :root {
+            --bg-body: #e0e0e0;
+            --bg-slide: #ffffff;
+            --danger-dark: #c62828;
+            --danger-light: #ef5350;
+            --danger-bg-soft: #fff5f5;
+            --warning-dark: #f57c00;
+            --warning-light: #ffb74d;
+            --warning-bg: #fff8e1;
+            --success-dark: #2e7d32;
+            --success-light: #66bb6a;
+            --success-bg: #e8f5e9;
+            --neutral-dark: #6A1B9A;
+            --neutral-light: #BA68C8;
+            --neutral-bg: #F3E5F5;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--bg-body);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .instagram-slide {
+            background-color: var(--bg-slide);
+            width: 1080px;
+            height: 1080px;
+            padding: 60px;
+            box-sizing: border-box;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        h1.slide-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 0;
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 4px solid;
+            width: 90%;
+            color: var(--neutral-dark);
+            border-color: var(--neutral-light);
+        }
+
+        .chart-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .mermaid {
+            font-family: 'Vazirmatn', sans-serif !important;
+            font-weight: 600;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .analysis-box {
+            background-color: var(--neutral-bg);
+            border-right: 8px solid var(--neutral-dark);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .analysis-text {
+            font-size: 1.7rem;
+            line-height: 1.7;
+            color: #333;
+            text-align: justify;
+            margin: 0;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="instagram-slide">
+        <h1 class="slide-title">نقشه کلان: فرار از رکود</h1>
+
+        <div class="chart-container">
+            <div class="mermaid">
+                %%{
+                  init: {
+                    "theme": "base",
+                    "themeVariables": {
+                      "primaryColor": "#F3E5F5",
+                      "primaryTextColor": "#6A1B9A",
+                      "primaryBorderColor": "#BA68C8",
+                      "lineColor": "#BA68C8",
+                      "fontFamily": "Vazirmatn"
+                    },
+                    "flowchart": { "curve": "basis" }
+                  }
+                }%%
+                flowchart LR
+                    subgraph RedLoop [ ]
+                        direction TB
+                        Inf("تورم")
+                        Mot("کاهش انگیزه")
+                        Qual("کیفیت پایین")
+                        Inf --> Mot
+                        Mot --> Qual
+                        Qual --> Inf
+                    end
+
+                    subgraph GreenLoop [ ]
+                        direction TB
+                        Agent("ایجنت‌های هوشمند")
+                        Prod("بهره‌وری بالا")
+                        Surv("بقا")
+                        Agent --> Prod
+                        Prod --> Surv
+                        Surv --> Agent
+                    end
+
+                    Qual ==>|"جهش اجباری"| Agent
+
+                    %% Styles
+                    classDef dangerMode fill:#ffebee,stroke:#c62828,stroke-width:3px,color:#b71c1c,rx:15,ry:15,font-size:20px;
+                    classDef successMode fill:#e8f5e9,stroke:#2e7d32,stroke-width:3px,color:#1b5e20,rx:15,ry:15,font-size:20px;
+
+                    class Inf,Mot,Qual dangerMode;
+                    class Agent,Prod,Surv successMode;
+
+                    %% Hide subgraph borders
+                    style RedLoop fill:none,stroke:none
+                    style GreenLoop fill:none,stroke:none
+
+                    %% Link Styling
+                    linkStyle default stroke-width:3px,fill:none,stroke:#BA68C8;
+                    linkStyle 6 stroke-width:6px,fill:none,stroke:#6A1B9A;
+            </div>
+        </div>
+
+        <div class="analysis-box">
+            <p class="analysis-text">
+                شما انتخاب نمی‌کنید که هوشمند شوید؛ شرایط اقتصادی شما را هل می‌دهد. کسب‌وکار شما کجاست؟ قرمز یا سبز؟
+            </p>
+        </div>
+    </div>
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+
+</body>
+</html>
