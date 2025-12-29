@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slide 2 Base Template</title>
+    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet" type="text/css" />
+
+    <style>
+        :root {
+            --bg-body: #e0e0e0;
+            --bg-slide: #ffffff;
+            --danger-dark: #c62828;
+            --danger-light: #ef5350;
+            --danger-bg-soft: #fff5f5;
+            --warning-dark: #f57c00;
+            --warning-light: #ffb74d;
+            --warning-bg: #fff8e1;
+            --success-dark: #2e7d32;
+            --success-light: #66bb6a;
+            --success-bg: #e8f5e9;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: var(--bg-body);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .instagram-slide {
+            background-color: var(--bg-slide);
+            width: 1080px;
+            height: 1080px;
+            padding: 60px;
+            box-sizing: border-box;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        h1.slide-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin: 0;
+            text-align: center;
+            padding-bottom: 20px;
+            border-bottom: 4px solid;
+            width: 90%;
+            /* Default color, can be overridden inline */
+            color: var(--danger-dark);
+            border-color: var(--danger-light);
+        }
+
+        .chart-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 20px 0;
+        }
+
+        .mermaid {
+            font-family: 'Vazirmatn', sans-serif !important;
+            font-weight: 600;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .analysis-box {
+            background-color: var(--danger-bg-soft);
+            border-right: 8px solid var(--danger-dark);
+            padding: 35px;
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .analysis-text {
+            font-size: 1.7rem;
+            line-height: 1.7;
+            color: #333;
+            text-align: justify;
+            margin: 0;
+            font-weight: 500;
+        }
+
+        .highlight {
+            font-weight: 800;
+            border-bottom: 2px dotted;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="instagram-slide">
+        <h1 class="slide-title">تله‌ی «حقوقِ بخور و نمیر»</h1>
+
+        <div class="chart-container">
+            <div class="mermaid">
+                %%{
+                  init: {
+                    "theme": "base",
+                    "themeVariables": {
+                      "primaryColor": "#fff5f5",
+                      "primaryTextColor": "#c62828",
+                      "primaryBorderColor": "#ef5350",
+                      "lineColor": "#ef5350",
+                      "fontFamily": "Vazirmatn"
+                    },
+                    "flowchart": { "curve": "basis" }
+                  }
+                }%%
+                flowchart TD
+                    Node1("📉 کاهش ارزش دستمزد")
+                    Node2("😒 کاهش انگیزه نیروی انسانی")
+                    Node3("⚠️ افت شدید کیفیت خروجی")
+
+                    Node1 -->|"پول بی‌ارزش"| Node2
+                    Node2 -->|"کار بی‌کیفیت"| Node3
+                    Node3 -->|"چرخه باطل"| Node1
+
+                    classDef dangerMode fill:#ffebee,stroke:#c62828,stroke-width:3px,color:#b71c1c,rx:15,ry:15,font-size:22px;
+                    class Node1,Node2,Node3 dangerMode;
+
+                    linkStyle default stroke-width:3px,fill:none,stroke:#ef5350;
+            </div>
+        </div>
+
+        <div class="analysis-box">
+            <p class="analysis-text">
+                در نگاه اول، حقوق پایین یعنی صرفه‌جویی. اما سیستم‌سازی می‌گوید...
+            </p>
+        </div>
+    </div>
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+
+</body>
+</html>
